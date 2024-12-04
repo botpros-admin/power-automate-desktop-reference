@@ -1,5 +1,7 @@
 # Scripting Actions
 
+This section contains all actions related to executing various types of scripts in Power Automate Desktop.
+
 ## Available Actions
 
 ### Command Line
@@ -17,4 +19,4 @@
 - Run custom scripts
 - Integrate with other programming languages
 - Perform complex calculations
-- Automate system tasks
+- Automate system administration tasks
