@@ -1,6 +1,8 @@
 # UI Automation Actions
 
-## Available Actions
+Comprehensive documentation for UI automation actions in Power Automate Desktop.
+
+## Categories
 
 ### Data Extraction
 1. [Get details of window](./get-details-of-window.md)
@@ -9,6 +11,7 @@
 4. [Get selected radio button](./get-selected-radio-button.md)
 5. [Extract data from window](./extract-data-from-window.md)
 6. [Extract data from table](./extract-data-from-table.md)
+7. [Take screenshot of UI element](./take-screenshot-of-ui-element.md)
 
 ### Form Filling
 1. [Focus text field](./focus-text-field.md)
@@ -22,11 +25,18 @@
 1. [Get window](./get-window.md)
 2. [Focus window](./focus-window.md)
 3. [Set window state](./set-window-state.md)
-4. [Close window](./close-window.md)
+4. [Set window visibility](./set-window-visibility.md)
+5. [Move window](./move-window.md)
+6. [Resize window](./resize-window.md)
+7. [Close window](./close-window.md)
 
-## Best Practices
-- Always include error handling for UI elements not found
-- Use descriptive selectors for UI elements
-- Add appropriate waits between UI interactions
-- Consider window state (minimized/maximized)
-- Handle dynamic UI changes
+### Conditional Actions
+1. [If window contains](./if-window-contains.md)
+2. [Wait for window content](./wait-for-window-content.md)
+3. [If image](./if-image.md)
+4. [Wait for image](./wait-for-image.md)
+
+### Mouse Actions
+1. [Hover mouse over UI element](./hover-mouse-over-ui-element.md)
+2. [Click UI element](./click-ui-element.md)
+3. [Drag and drop UI element](./drag-and-drop-ui-element.md)
