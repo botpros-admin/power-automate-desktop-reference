@@ -1,1 +1,56 @@
-IyBSdW4gSmF2YVNjcmlwdAoKIyMgRGVzY3JpcHRpb24KRXhlY3V0ZXMgY3VzdG9tIEphdmFTY3JpcHQgY29kZSBhbmQgcmV0cmlldmVzIGl0cyBvdXRwdXQgaW50byBhIHZhcmlhYmxlLgoKIyMgU3ludGF4CmBgYApTY3JpcHRpbmcuUnVuSmF2YXNjcmlwdC5SdW5KYXZhc2NyaXB0IEphdmFzY3JpcHRDb2RlOiAkJycnJycnIFNjcmlwdE91dHB1dD0+IEphdmFzY3JpcHRPdXRwdXQKYGBgCgojIyBJbnB1dCBQYXJhbWV0ZXJzCgp8IFBhcmFtZXRlciB8IFJlcXVpcmVkIHwgQWNjZXB0cyB8IERlZmF1bHQgVmFsdWUgfCBEZXNjcmlwdGlvbiB8Cnwtcy18LXItfC1hLXwtZHYtfC1kLXwKfCBKYXZhU2NyaXB0IGNvZGUgfCBZZXMgfCBUZXh0IHZhbHVlIHwgLSB8IFRoZSBKYXZhU2NyaXB0IGNvZGUgdG8gZXhlY3V0ZSB8CnwgRmFpbCBhZnRlciB0aW1lb3V0IHwgTm8gfCBCb29sZWFuIHZhbHVlIHwgLSB8IFdoZXRoZXIgdGhlIEphdmFTY3JpcHQgd2lsbCBydW4gaW5kZWZpbml0ZWx5IG9yIGZhaWwgYWZ0ZXIgYSBzZXQgcGVyaW9kIG9mIHRpbWUgfAp8IFRpbWVvdXQgfCBZZXMgKGlmIEZhaWwgYWZ0ZXIgdGltZW91dCBpcyB0cnVlKSB8IE51bWVyaWMgdmFsdWUgfCAxMCB8IFRoZSBtYXhpbXVtIG51bWJlciBvZiBzZWNvbmRzIHRvIHdhaXQgZm9yIHRoZSBzY3JpcHQgdG8gY29tcGxldGUgKC0xIGZvciBpbmRlZmluaXRlbHkpIHwKCiMjIE91dHB1dCBWYXJpYWJsZXMKCnwgVmFyaWFibGUgfCBUeXBlIHwgRGVzY3JpcHRpb24gfAp8LS0tfC0tfC0tfAp8IEphdmFzY3JpcHRPdXRwdXQgfCBUZXh0IHZhbHVlIHwgVGhlIHNjcmlwdCdzIG91dHB1dCB8CnwgU2NyaXB0RXJyb3IgfCBUZXh0IHZhbHVlIHwgVGhlIGVycm9ycyB0aGF0IG1heSBvY2N1ciBkdXJpbmcgZXhlY3V0aW9uIHwKCiMjIEV4Y2VwdGlvbnMKCnwgRXhjZXB0aW9uIHwgRGVzY3JpcHRpb24gfAp8LS0tfC0tfAp8IEZhaWxlZCB0byBydW4gc2NyaXB0IGluIHRoZSBhbGxvdHRlZCB0aW1lIHwgSW5kaWNhdGVzIGEgcHJvYmxlbSBydW5uaW5nIHRoZSBwcm92aWRlZCBzY3JpcHQgaW4gdGhlIGFsbG90dGVkIHRpbWUgfAoKIyMgRXhhbXBsZSBVc2FnZQoKYGBgamF2YXNjcmlwdAojIENhbGN1bGF0ZSBhcnJheSBzdW0KU2NyaXB0aW5nLlJ1bkphdmFzY3JpcHQuUnVuSmF2YXNjcmlwdCBKYXZhc2NyaXB0Q29kZTogJCcnJ2NvbnN0IG51bXMgPSBbMSwgMiwgMywgNCwgNV07CmNvbnN0IHN1bSA9IG51bXMucmVkdWNlKChhLCBiKSA9PiBhICsgYiwgMCk7CmNvbnNvbGUubG9nKGBTdW06ICR7c3VtfWApOycnJyBTY3JpcHRPdXRwdXQ9PiBBcnJheVN1bQoKIyBNYW5pcHVsYXRlIEpTT04gZGF0YQpTY3JpcHRpbmcuUnVuSmF2YXNjcmlwdC5SdW5KYXZhc2NyaXB0IEphdmFzY3JpcHRDb2RlOiAkJycnCmNvbnN0IGRhdGEgPSB7CiAgbmFtZTogIkpvaG4iLAogIGFnZTogMzAsCiAgY2l0eTogIk5ldyBZb3JrIgp9Owpjb25zb2xlLmxvZyhKU09OLnN0cmluZ2lmeShkYXRhLCBudWxsLCAyKSk7CicnJyBTY3JpcHRPdXRwdXQ9PiBKc29uRGF0YQpgYGAKCiMjIEJlc3QgUHJhY3RpY2VzCjEuIFVzZSBwcm9wZXIgZXJyb3IgaGFuZGxpbmcgd2l0aCB0cnkvY2F0Y2gKMi4gQXZvaWQgaW5maW5pdGUgbG9vcHMKMy4gVXNlIGNvbnNvbGUubG9nIGZvciBvdXRwdXQKNC4gU2V0IGFwcHJvcHJpYXRlIHRpbWVvdXRzCjUuIEZvcm1hdCBvdXRwdXQgZm9yIGVhc3kgcGFyc2luZw==
+# Run JavaScript
+
+## Description
+Executes custom JavaScript code and retrieves its output into a variable.
+
+## Syntax
+```
+Scripting.RunJavascript.RunJavascript JavascriptCode: $'''''' ScriptOutput=> JavascriptOutput
+```
+
+## Input Parameters
+
+| Parameter | Required | Accepts | Default Value | Description |
+|-----------|----------|---------|---------------|-------------|
+| JavaScriptCode | Yes | Text value | - | The JavaScript code to execute |
+| Fail after timeout | No | Boolean value | - | Whether the JavaScript script will run indefinitely or fail after a set period of time |
+| Timeout | Yes (if Fail after timeout is true) | Numeric value | 10 | The maximum number of seconds to wait for the script to complete (-1 for indefinitely) |
+
+## Output Variables
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| JavascriptOutput | Text value | The script's output |
+| ScriptError | Text value | The errors that may occur during execution |
+
+## Exceptions
+
+| Exception | Description |
+|-----------|-------------|
+| Failed to run script in the allotted time | Indicates a problem running the provided script in the allotted time |
+
+## Example Usage
+
+```javascript
+# Calculate array sum
+Scripting.RunJavascript.RunJavascript JavascriptCode: $'''const nums = [1, 2, 3, 4, 5];
+const sum = nums.reduce((a, b) => a + b, 0);
+console.log(`Sum: ${sum}`);''' ScriptOutput=> ArraySum
+
+# Manipulate JSON data
+Scripting.RunJavascript.RunJavascript JavascriptCode: $'''
+const data = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+console.log(JSON.stringify(data, null, 2));
+''' ScriptOutput=> JsonData
+```
+
+## Best Practices
+1. Use proper error handling with try/catch
+2. Avoid infinite loops
+3. Use console.log for output
+4. Set appropriate timeouts
+5. Format output for easy parsing
