@@ -1,7 +1,7 @@
 # Run JavaScript
 
 ## Description
-Executes custom JavaScript code and retrieves its output into a variable. This action supports interaction with PAD variables, string manipulation, mathematical operations, error handling, and various other JavaScript functionalities.
+Executes custom JavaScript code and retrieves its output into a variable. This action allows for complex data manipulation, calculations, and automation tasks using JavaScript, with full access to Power Automate Desktop variables.
 
 ## Syntax
 ```
@@ -28,145 +28,214 @@ Scripting.RunJavascript.RunJavascript JavascriptCode: $'''[JavaScript code]''' S
 | Exception | Description |
 |-----------|-------------|
 | Failed to run script in the allotted time | Indicates a problem running the provided script in the allotted time |
+| Syntax error in script | Indicates invalid JavaScript syntax in the provided code |
+| Variable reference error | Indicates an attempt to access an undefined PAD variable |
+
+## Important Notes
+
+1. **Variable Integration**
+   - All PAD variables are accessed using %VariableName% syntax
+   - Variables are passed as strings and require explicit type conversion
+   - Changes to variables in the script don't affect PAD variables directly
+
+2. **Output Handling**
+   - Only WScript.StdOut.Write output is captured
+   - Multiple writes are concatenated in order
+   - Line breaks require explicit '\n' characters
+   - Console.log() is not supported
+
+3. **Performance Considerations**
+   - Complex loops should include timeout checks
+   - Large data operations should be optimized
+   - Memory usage should be monitored in long-running scripts
 
 ## Key Features
 
-1. **Variable Access**
-   - Access PAD variables using %VariableName% syntax
-   - All variables are passed as strings by default
-   - Requires explicit type conversion for numbers and other types
+1. **Variable Access and Manipulation**
+   - Access to all PAD flow variables
+   - String manipulation capabilities
+   - Numeric calculations and conversions
+   - Date and time operations
 
-2. **Output Methods**
-   - Use WScript.StdOut.Write() for output
-   - Multiple writes are concatenated in the output
-   - Supports \n for line breaks
+2. **Data Processing**
+   - Array and object manipulation
+   - JSON parsing and formatting
+   - Text processing and validation
+   - Regular expression support
 
-3. **Error Handling**
-   - Supports try/catch blocks
-   - Can capture and report specific error messages
-   - Errors are accessible via ScriptError variable
+3. **Control Flow**
+   - Conditional execution
+   - Loop constructs
+   - Error handling
+   - Function definition and usage
 
 ## Example Usage
 
-### Basic Variable Manipulation
+### Basic Variable Operations
 ```javascript
-// Access and modify PAD variables
+// Basic variable access and manipulation
 var name = '%UserName%';
-name = name.toUpperCase();
-WScript.StdOut.Write(name);
+var age = parseInt('%UserAge%');
+WScript.StdOut.Write(`Name: ${name}, Age next year: ${age + 1}`);
 ```
 
-### String Operations
+### String Processing
 ```javascript
-// Replace and transform text
+// Advanced string manipulation
 var text = '%InputText%';
-text = text.replace(/-/g, "").replace(/O/g, "0");
-WScript.StdOut.Write(text);
-
-// Concatenate strings
-var firstName = '%FirstName%';
-var lastName = '%LastName%';
-WScript.StdOut.Write(firstName + " " + lastName);
+var processed = text
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '')
+    .split('')
+    .reverse()
+    .join('');
+WScript.StdOut.Write(processed);
 ```
 
-### Numeric Operations
+### Data Validation
 ```javascript
-// Parse and calculate
-var num1 = parseFloat('%Number1%');
-var num2 = parseFloat('%Number2%');
-WScript.StdOut.Write(num1 + num2);
-
-// Generate random numbers
-var random = Math.floor(Math.random() * 100) + 1;
-WScript.StdOut.Write(random);
-```
-
-### Conditional Logic
-```javascript
-// Check conditions
-var status = '%Status%';
-if (status === "Active") {
-    WScript.StdOut.Write("Active user");
-} else {
-    WScript.StdOut.Write("Inactive user");
-}
-```
-
-### Array Operations
-```javascript
-// Process comma-separated values
-var items = '%ItemList%'.split(',');
-for (var i = 0; i < items.length; i++) {
-    WScript.StdOut.Write(items[i] + "\n");
-}
-```
-
-### Error Handling
-```javascript
-// Handle potential errors
+// Input validation with error handling
 try {
-    var value = '%InputValue%';
-    var result = parseInt(value) * 10;
-    WScript.StdOut.Write(result);
+    var email = '%EmailAddress%';
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!email || !emailRegex.test(email)) {
+        throw new Error('Invalid email format');
+    }
+    
+    WScript.StdOut.Write('Valid email');
 } catch (e) {
-    WScript.StdOut.Write("Error: " + e.message);
+    WScript.StdOut.Write('Error: ' + e.message);
 }
 ```
 
-### Date Operations
+### Complex Data Processing
 ```javascript
-// Calculate date differences
+// Process JSON data with error checking
+try {
+    var jsonData = '%JsonInput%';
+    var data = JSON.parse(jsonData);
+    
+    // Data transformation
+    var result = data.items
+        .filter(item => item.active)
+        .map(item => ({
+            id: item.id,
+            value: item.value * 1.1
+        }));
+    
+    WScript.StdOut.Write(JSON.stringify(result, null, 2));
+} catch (e) {
+    WScript.StdOut.Write('Processing error: ' + e.message);
+}
+```
+
+### Date Calculations
+```javascript
+// Advanced date manipulation
 var startDate = new Date('%StartDate%');
 var endDate = new Date('%EndDate%');
-var days = (endDate - startDate) / (1000 * 60 * 60 * 24);
-WScript.StdOut.Write(days);
-```
 
-### JSON Handling
-```javascript
-// Parse and access JSON
-var jsonStr = '%JsonData%';
-var jsonObj = JSON.parse(jsonStr);
-WScript.StdOut.Write(jsonObj.propertyName);
+var msPerDay = 24 * 60 * 60 * 1000;
+var weekends = 0;
+var current = new Date(startDate);
+
+while (current <= endDate) {
+    if (current.getDay() === 0 || current.getDay() === 6) {
+        weekends++;
+    }
+    current.setDate(current.getDate() + 1);
+}
+
+var totalDays = Math.round((endDate - startDate) / msPerDay);
+var workDays = totalDays - weekends;
+
+WScript.StdOut.Write(`Work days: ${workDays}`);
 ```
 
 ## Best Practices
-1. Always use WScript.StdOut.Write for output
-2. Convert variable types explicitly (parseFloat, parseInt, etc.)
-3. Implement error handling with try/catch blocks
-4. Use appropriate string methods for text manipulation
-5. Format output clearly with line breaks when needed
-6. Comment code for clarity
-7. Validate input data before processing
-8. Handle edge cases and null values
+
+1. **Code Structure**
+   - Use clear variable names
+   - Add comments for complex logic
+   - Break down complex operations
+   - Follow JavaScript best practices
+
+2. **Error Handling**
+   - Implement try/catch blocks
+   - Validate input data
+   - Provide meaningful error messages
+   - Handle edge cases
+
+3. **Performance**
+   - Optimize loops and data processing
+   - Limit complexity of operations
+   - Use appropriate data structures
+   - Consider memory usage
+
+4. **Output Formatting**
+   - Use clear output structures
+   - Include necessary delimiters
+   - Format complex data appropriately
+   - Consider downstream processing
 
 ## Common Patterns
 
-### Input Validation
+### Input Validation Pattern
 ```javascript
-var input = '%InputValue%';
-if (!input || input.trim() === '') {
-    WScript.StdOut.Write('Invalid input');
+function validateInput(value, type) {
+    switch(type) {
+        case 'number':
+            return !isNaN(parseFloat(value)) && isFinite(value);
+        case 'date':
+            return !isNaN(new Date(value).getTime());
+        case 'email':
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        default:
+            return !!value && value.trim().length > 0;
+    }
+}
+
+var input = '%UserInput%';
+var type = '%ValidationType%';
+
+if (!validateInput(input, type)) {
+    WScript.StdOut.Write(`Invalid ${type} input`);
     return;
 }
 ```
 
-### Multiple Line Output
+### Data Transformation Pattern
 ```javascript
-var result = [];
-result.push('Line 1');
-result.push('Line 2');
-result.push('Line 3');
-WScript.StdOut.Write(result.join('\n'));
+var data = '%InputData%'.split(',');
+var transformed = data
+    .map(item => item.trim())
+    .filter(Boolean)
+    .map(item => ({
+        original: item,
+        modified: item.toUpperCase(),
+        length: item.length
+    }));
+
+WScript.StdOut.Write(JSON.stringify(transformed, null, 2));
 ```
 
-### Data Transformation
-```javascript
-var data = '%RawData%';
-var transformed = data
-    .split(',')
-    .map(item => item.trim())
-    .filter(item => item.length > 0)
-    .join(', ');
-WScript.StdOut.Write(transformed);
-```
+## Troubleshooting
+
+1. **Common Issues**
+   - Invalid variable references
+   - Type conversion errors
+   - Syntax errors in JavaScript
+   - Timeout issues with long operations
+
+2. **Debug Techniques**
+   - Use structured error messages
+   - Add intermediate output points
+   - Check variable types explicitly
+   - Log operation progress
+
+3. **Performance Issues**
+   - Monitor loop operations
+   - Check data structure sizes
+   - Validate timeout settings
+   - Optimize complex calculations
