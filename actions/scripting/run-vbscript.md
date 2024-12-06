@@ -1,27 +1,27 @@
 # Run VBScript
 
+## Description
 Executes custom VBScript code and retrieves its output into a variable.
 
 ## Syntax
-
 ```
-Scripting.RunVBScript.RunVBScript VBScriptCode: $'''[VBScript code]''' ScriptOutput=> VBScriptOutput
+Scripting.RunVBScript.RunVBScript VBScriptCode: $'''''' ScriptOutput=> VBScriptOutput
 ```
 
-## Parameters
+## Input Parameters
 
-| Parameter | Required | Type | Description |
-|-----------|----------|------|-------------|
-| VBScriptCode | Yes | Text value | The VBScript code to execute. Variables may be included within the script since they evaluate prior to the execution of the VBScript |
-| Fail after timeout | Yes | Boolean value | Specify whether the VBScript script will run indefinitely or fail after a set period of time |
-| Timeout | No | Numeric value | The maximum number of seconds to wait for the script to complete (-1 for indefinitely). Default: 10 |
+| Parameter | Required | Accepts | Default Value | Description |
+|-----------|----------|---------|---------------|-------------|
+| VBScriptCode | Yes | Text value | - | The VBScript code to execute |
+| Fail after timeout | No | Boolean value | - | Whether the VBScript will run indefinitely or fail after a set period of time |
+| Timeout | Yes (if Fail after timeout is true) | Numeric value | 10 | The maximum number of seconds to wait for the script to complete (-1 for indefinitely) |
 
-## Returns
+## Output Variables
 
 | Variable | Type | Description |
 |----------|------|-------------|
 | VBScriptOutput | Text value | The script's output |
-| ScriptError | Text value | The errors that may occur during the execution of the VBScript code |
+| ScriptError | Text value | The errors that may occur during execution |
 
 ## Exceptions
 
@@ -29,9 +29,23 @@ Scripting.RunVBScript.RunVBScript VBScriptCode: $'''[VBScript code]''' ScriptOut
 |-----------|-------------|
 | Failed to run script in the allotted time | Indicates a problem running the provided script in the allotted time |
 
-## Remarks
+## Example Usage
 
-- You can use this action to include your own custom VBScript code in the desktop flow
-- Variables can be included within the script as they are evaluated before execution
-- The script's output and any errors are captured in separate variables
-- A timeout can be set to prevent infinite execution
+```vbscript
+# Display message box
+Scripting.RunVBScript.RunVBScript VBScriptCode: $'''MsgBox "Hello World"''' ScriptOutput=> MessageOutput
+
+# Process text
+Scripting.RunVBScript.RunVBScript VBScriptCode: $'''
+Dim text
+text = "Hello World"
+WScript.Echo UCase(text)
+''' ScriptOutput=> ProcessedText
+```
+
+## Best Practices
+1. Use proper error handling
+2. Avoid infinite loops
+3. Use WScript.Echo for output
+4. Set appropriate timeouts
+5. Format output for easy parsing
