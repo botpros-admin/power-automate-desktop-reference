@@ -12,12 +12,19 @@ OCR.ExtractTextWithOCR.ExtractTextFromScreenWithWindowsOcr WindowsOcrLanguage: O
 
 | Parameter | Required | Accepts | Default Value | Description |
 |-----------|----------|---------|---------------|-------------|
-| OCR engine | Yes | Windows OCR engine, Tesseract engine, OCR engine variable | OCR engine variable | The OCR engine to use |
+| OCR engine | Yes | Windows OCR engine, Tesseract engine, OCR engine variable | OCR engine variable | OCR engine to use |
 | OCR engine variable | Yes | OCREngineObject | - | Engine for OCR operation |
 | OCR source | Yes | Screen, Foreground window, Image on disk | Screen | Source for OCR |
 | Image file path | Yes (if Image) | File | - | Path to image file |
 | Search mode | Yes | Whole of specified source, Specific subregion only, Subregion relative to image | Whole of specified source | OCR area |
+| Image | Yes (if subregion) | List of Images | - | Reference image |
+| Tolerance | No | Numeric value | 10 | Image matching tolerance |
+| X1, Y1 | Yes (if subregion) | Numeric value | - | Start coordinates |
+| X2, Y2 | Yes (if subregion) | Numeric value | - | End coordinates |
 | Windows OCR language | Yes | [List of languages] | English | Language for OCR |
+| Use other language | No | Boolean value | False | Use custom Tesseract language |
+| Language abbreviation | Yes (if custom) | Text value | - | Tesseract language code |
+| Language data path | Yes (if custom) | Text value | - | Path to language data |
 | Image width multiplier | No | Numeric value | 1 | Image width scaling |
 | Image height multiplier | No | Numeric value | 1 | Image height scaling |
 | Wait for image to appear | No | Boolean value | True | Wait for source image |
@@ -44,5 +51,6 @@ OCR.ExtractTextWithOCR.ExtractTextFromScreenWithWindowsOcr WindowsOcrLanguage: O
 
 ## Notes
 - OCR engine variable option is being deprecated
-- Ensure required language packs are installed
-- Use appropriate timeout values for source type
+- For Tesseract custom languages, ensure proper language data files are installed
+- Windows OCR requires corresponding language packs
+- Use appropriate timeout values based on source complexity
