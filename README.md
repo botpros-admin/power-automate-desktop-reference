@@ -8,13 +8,26 @@ This repository serves as a reference database for AI assistants to generate acc
 2. To ensure generated subflows can be directly pasted into Power Automate Desktop without modification
 3. To maintain a comprehensive library of exact PAD action formats as they appear when copied from the application
 
-## Important Notes for AI Assistants
+## Critical Syntax Rules for AI Assistants
 
-- The syntax provided in each action file is the exact text output when copying an action from Power Automate Desktop
-- When users request flows or subflows, combine these action syntaxes to create pastable content
-- Action syntax includes variable names and formatting exactly as needed by PAD
-- Users can paste the provided syntax directly into their PAD flows
-- Maintain proper indentation and line breaks as shown in the examples
+### Do's
+- Keep each action on a single line only - no line breaks or empty lines
+- Use the exact action and parameter names as provided in the examples
+- Maintain identical casing and spelling for all components
+- Use backticks (``) as placeholders for values
+- Place actual values by either:
+  - Replacing the backticks entirely with the value, or
+  - Placing the value between the backticks (test which works)
+- Maintain exact spacing: one space after colons, one space between parameters
+- Test any modifications in PAD before documenting
+
+### Don'ts
+- Do not use markdown or code blocks in the final snippet
+- Do not add extra spaces or characters
+- Do not alter parameter names or order
+- Do not change enumerations without testing
+- Do not include comments or explanations on the same line as the action
+- Do not add quotes, parentheses, or brackets around values unless explicitly shown
 
 ## Action Categories
 
@@ -92,4 +105,4 @@ PROCESS Write text to file
 END PROCESS
 ```
 
-Note that this is direct, pastable syntax as it appears when copied from PAD.
+Note: Test all snippets in PAD before providing them to users. The goal is to ensure every snippet can be pasted directly into PAD without any modification.
