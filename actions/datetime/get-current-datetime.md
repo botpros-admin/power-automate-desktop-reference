@@ -1,60 +1,48 @@
 # Get Current DateTime
 
-## ‼️ MANDATORY EXACT FORMAT - NO EXCEPTIONS ‼️
+## 🚨 BACKTICKS ARE MANDATORY - MUST USE EXACTLY AS SHOWN 🚨
 
-This action has ONE valid format. It MUST be written EXACTLY as shown below:
+This is the ONLY valid format - BACKTICKS REQUIRED:
+
+```
+DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
+```
+
+## ⛔️ THESE ARE ALL WRONG - DO NOT USE:
+
+```
+// ❌ WRONG - NO BACKTICKS
+DateTime.GetCurrentDateTime Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentTime
+
+// ❌ WRONG - HAS REGIONS AND NO BACKTICKS
+**REGION InitializeCurrentTime
+DateTime.GetCurrentDateTime Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentTime
+**ENDREGION
+
+// ❌ WRONG - USING %VARIABLES% INSTEAD OF BACKTICKS
+DateTime.GetCurrentDateTime DateTime: %CurrentTime% ResultedDate=> CurrentDateTime
+```
+
+## ✅ THIS IS THE ONLY CORRECT FORMAT:
 
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-This means:
-- ONE line only
-- EXACT spacing (one space after each colon)
-- EXACT parameter names
-- EXACT variable names
-- NO additional parameters
-- NO regions
-- NO comments
-- NO line breaks
-- NO DateTimeFormat parameter
+## 🔴 ABSOLUTELY REQUIRED:
 
-## ⛔ FORBIDDEN FORMATS - These Will NOT Work:
-
-```
-// WRONG - Regions not allowed
-**REGION GetCurrentDateTime**
-DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDate
-**ENDREGION**
-
-// WRONG - Extra parameters not allowed
-DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDate
-
-// WRONG - Different parameter names
-DateTime.GetCurrentDateTime Date: `` Result=> CurrentDate
-
-// WRONG - Line breaks not allowed
-DateTime.GetCurrentDateTime
-  DateTime: ``
-  ResultedDate=> CurrentDateTime
-```
-
-## ✅ The ONLY Valid Format:
-
-```
-DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
-```
+1. BACKTICKS (``) MUST BE USED EXACTLY AS SHOWN
+2. NO %VARIABLES% - USE BACKTICKS INSTEAD
+3. NO REGIONS
+4. NO DateTimeFormat parameter
+5. NO Local parameter
+6. ONE LINE ONLY
+7. EXACT SPACING
+8. EXACT PARAMETER NAMES
+9. EXACT VARIABLE NAMES
 
 ## Output Variables
 
 | Variable | Type | Description |
 |----------|------|-------------|
 | CurrentDateTime | DateTime | The current system date and time |
-
-## Critical Notes
-
-- You MUST use this EXACT format
-- You MUST use CurrentDateTime as the output variable name
-- You MUST keep it on one line
-- You MUST NOT add any extra parameters or formatting
-- You MUST NOT use regions or comments

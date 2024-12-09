@@ -1,65 +1,59 @@
 # Add to DateTime
 
-## ‼️ MANDATORY EXACT FORMAT - NO EXCEPTIONS ‼️
+## 🚨 BACKTICKS ARE MANDATORY - MUST USE EXACTLY AS SHOWN 🚨
 
-This action has ONE valid format. It MUST be written EXACTLY as shown below:
+This is the ONLY valid format - BACKTICKS REQUIRED:
 
 ```
 DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-This means:
-- ONE line only
-- EXACT spacing (one space after each colon)
-- EXACT parameter names
-- EXACT variable names
-- NO additional parameters
-- NO regions
-- NO comments
-- NO line breaks
-- TimeUnit MUST be DateTime.TimeUnit.Seconds
-
-## ⛔ FORBIDDEN FORMATS - These Will NOT Work:
+## ⛔️ THESE ARE ALL WRONG - DO NOT USE:
 
 ```
-// WRONG - Regions not allowed
-**REGION AddBusinessDays**
-DateTime.Add DateTime: %CurrentDate% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
-**ENDREGION**
+// ❌ WRONG - NO BACKTICKS, USING %VARIABLES%
+DateTime.Add DateTime: %CurrentTime% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
 
-// WRONG - Different variable names
-DateTime.Add DateTime: %CurrentDate% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
+// ❌ WRONG - HAS REGIONS
+**REGION AddBusinessDays
+DateTime.Add DateTime: %CurrentTime% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
+**ENDREGION
 
-// WRONG - Line breaks not allowed
+// ❌ WRONG - LINE BREAKS AND NO BACKTICKS
 DateTime.Add
-  DateTime: ``
+  DateTime: %CurrentDateTime%
   TimeToAdd: 432000
   TimeUnit: DateTime.TimeUnit.Seconds
   ResultedDate=> ResultedDate
 ```
 
-## ✅ The ONLY Valid Examples:
+## ✅ THESE ARE THE ONLY CORRECT FORMATS:
 
 ```
+// ✅ CORRECT - HAS BACKTICKS, ONE LINE
+DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
+
+// ✅ CORRECT - HAS BACKTICKS, WITH VALUE
 DateTime.Add DateTime: `` TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
+## 🔴 ABSOLUTELY REQUIRED:
+
+1. BACKTICKS (``) MUST BE USED FOR DateTime PARAMETER
+2. NO %VARIABLES% - USE BACKTICKS INSTEAD
+3. NO REGIONS
+4. ONE LINE ONLY
+5. EXACT SPACING
+6. EXACT PARAMETER NAMES
+7. EXACT VARIABLE NAMES
+8. TimeUnit MUST BE DateTime.TimeUnit.Seconds
+
 ## Time Conversions
 
-When specifying TimeToAdd, convert your time to seconds:
-
+When specifying TimeToAdd, convert to seconds:
 - 1 minute = 60 seconds
 - 1 hour = 3600 seconds
 - 1 day = 86400 seconds
 - 5 days = 432000 seconds
 - 1 week = 604800 seconds
 - 30 days = 2592000 seconds
-
-## Critical Notes
-
-- You MUST use this EXACT format
-- You MUST use ResultedDate as the output variable name
-- You MUST keep it on one line
-- You MUST use DateTime.TimeUnit.Seconds
-- You MUST NOT add any extra parameters or formatting
-- You MUST NOT use regions or comments
