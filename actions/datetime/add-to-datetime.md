@@ -1,26 +1,50 @@
 # Add to DateTime
 
 ## Description
-Adds or subtracts a specified interval to/from a datetime value.
+Adds a specified amount of time to a date/time value.
 
 ## Syntax
 ```
-DateTime.Add DateTime: `[date]` TimeToAdd: `[value]` TimeUnit: DateTime.TimeUnit.Days ResultedDate=> ResultDate
+DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
 ## Input Parameters
 
-| Parameter | Required | Accepts | Default Value | Description |
-|-----------|----------|---------|---------------|-------------|
-| DateTime | Yes | DateTime | - | Base date to modify |
-| TimeToAdd | Yes | Numeric value | - | Amount to add/subtract |
-| TimeUnit | Yes | Years, Months, Days, Hours, Minutes, Seconds | Days | Unit of time to add |
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| DateTime | Yes | The date/time value to add to |
+| TimeToAdd | Yes | Amount of time to add (numeric value) |
+| TimeUnit | Yes | Must be DateTime.TimeUnit.Seconds |
 
 ## Output Variables
 
 | Variable | Type | Description |
 |----------|------|-------------|
-| ResultDate | DateTime | The resulting date and time |
+| ResultedDate | DateTime | The resulting date/time value |
 
-## Exceptions
-This action doesn't include any exceptions.
+## Examples
+
+### Add 5 Days
+```
+DateTime.Add DateTime: `` TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
+```
+
+### Add 30 Minutes
+```
+DateTime.Add DateTime: `` TimeToAdd: 1800 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
+```
+
+### Add 1 Hour
+```
+DateTime.Add DateTime: `` TimeToAdd: 3600 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
+```
+
+## Important Notes
+
+- Always use Seconds as the TimeUnit for consistent behavior
+- Convert your desired time to seconds before using:
+  - Minutes × 60
+  - Hours × 3600
+  - Days × 86400
+  - Weeks × 604800
+  - Months (30 days) × 2592000
