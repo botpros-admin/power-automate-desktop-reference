@@ -1,18 +1,22 @@
 # Get Current DateTime
 
-## Description
-Gets the current system date and time.
+## CRITICAL: EXACT SYNTAX
 
-## Syntax
+This action MUST be written on a single line exactly as shown:
+
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-## Input Parameters
+## Description
+Gets the current system date and time.
+
+## Parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| DateTime | Yes | Placeholder - use backticks |
+| DateTime | Yes | Must be written with backticks exactly as shown |
+| ResultedDate=> | Yes | Must be written exactly as shown |
 
 ## Output Variables
 
@@ -20,22 +24,40 @@ DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 |----------|------|-------------|
 | CurrentDateTime | DateTime | The current system date and time |
 
-## Example Usage
+## Example - CORRECT FORMAT
 
-### Get Current Date and Time
+✅ CORRECT - Single line with exact spacing:
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-### Get Current Date/Time Then Add One Day
+## Examples - WRONG FORMATS
+
+❌ WRONG - Do not use regions or indentation:
 ```
-DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
-DateTime.Add DateTime: `` TimeToAdd: 86400 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> TomorrowDateTime
+**REGION Initialize
+DateTime.GetCurrentDateTime
+  DateTime => CurrentDateTime
+**ENDREGION
+```
+
+❌ WRONG - Do not break into multiple lines:
+```
+DateTime.GetCurrentDateTime
+  DateTime: `` 
+  ResultedDate => CurrentDateTime
+```
+
+❌ WRONG - Do not add comments or extra formatting:
+```
+// Get current date
+DateTime.GetCurrentDateTime DateTime => CurrentDateTime
 ```
 
 ## Notes
 
-- The current time is based on the system clock
-- Use this action when you need a reference point for date/time calculations
-- Combine with DateTime.Add for relative time calculations
-- Always maintain exact syntax with backticks as shown
+- Must be a single line
+- Must use exact spacing
+- Must use backticks (``) as shown
+- No comments or extra formatting
+- No regions or indentation
