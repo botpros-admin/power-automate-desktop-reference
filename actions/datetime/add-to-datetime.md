@@ -1,72 +1,52 @@
 # Add to DateTime
 
-## CRITICAL: EXACT SYNTAX
+## ‼️ MANDATORY EXACT FORMAT - NO EXCEPTIONS ‼️
 
-This action MUST be written on a single line exactly as shown:
+This action has ONE valid format. It MUST be written EXACTLY as shown below:
 
 ```
 DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-## Description
-Adds a specified amount of time to a date/time value.
+This means:
+- ONE line only
+- EXACT spacing (one space after each colon)
+- EXACT parameter names
+- EXACT variable names
+- NO additional parameters
+- NO regions
+- NO comments
+- NO line breaks
+- TimeUnit MUST be DateTime.TimeUnit.Seconds
 
-## Parameters
+## ⛔ FORBIDDEN FORMATS - These Will NOT Work:
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| DateTime | Yes | Must use backticks exactly as shown |
-| TimeToAdd | Yes | Must use backticks or numeric value |
-| TimeUnit | Yes | Must be exactly DateTime.TimeUnit.Seconds |
-| ResultedDate=> | Yes | Must be written exactly as shown |
+```
+// WRONG - Regions not allowed
+**REGION AddBusinessDays**
+DateTime.Add DateTime: %CurrentDate% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
+**ENDREGION**
 
-## Output Variables
+// WRONG - Different variable names
+DateTime.Add DateTime: %CurrentDate% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
 
-| Variable | Type | Description |
-|----------|------|-------------|
-| ResultedDate | DateTime | The resulting date/time |
+// WRONG - Line breaks not allowed
+DateTime.Add
+  DateTime: ``
+  TimeToAdd: 432000
+  TimeUnit: DateTime.TimeUnit.Seconds
+  ResultedDate=> ResultedDate
+```
 
-## Examples - CORRECT FORMAT
+## ✅ The ONLY Valid Examples:
 
-✅ CORRECT - Single line with 5 days (432000 seconds):
 ```
 DateTime.Add DateTime: `` TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-✅ CORRECT - Single line with 1 hour (3600 seconds):
-```
-DateTime.Add DateTime: `` TimeToAdd: 3600 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
-```
+## Time Conversions
 
-## Examples - WRONG FORMATS
-
-❌ WRONG - Do not use regions or indentation:
-```
-**REGION AddTime
-DateTime.Add
-  DateTime: %CurrentDateTime%
-  TimeToAdd: 432000
-  TimeUnit: DateTime.TimeUnit.Seconds
-  ResultedDate => FutureDateTime
-**ENDREGION
-```
-
-❌ WRONG - Do not break into multiple lines:
-```
-DateTime.Add
-  DateTime: `` 
-  TimeToAdd: 432000
-  TimeUnit: DateTime.TimeUnit.Seconds
-  ResultedDate => ResultedDate
-```
-
-❌ WRONG - Do not add comments or extra formatting:
-```
-// Add 5 days
-DateTime.Add DateTime: %CurrentDateTime% TimeToAdd: 432000  // in seconds
-```
-
-## Common Time Conversions
+When specifying TimeToAdd, convert your time to seconds:
 
 - 1 minute = 60 seconds
 - 1 hour = 3600 seconds
@@ -75,11 +55,11 @@ DateTime.Add DateTime: %CurrentDateTime% TimeToAdd: 432000  // in seconds
 - 1 week = 604800 seconds
 - 30 days = 2592000 seconds
 
-## Notes
+## Critical Notes
 
-- Must be a single line
-- Must use exact spacing
-- Must use backticks (``) as shown
-- Must use Seconds as TimeUnit
-- No comments or extra formatting
-- No regions or indentation
+- You MUST use this EXACT format
+- You MUST use ResultedDate as the output variable name
+- You MUST keep it on one line
+- You MUST use DateTime.TimeUnit.Seconds
+- You MUST NOT add any extra parameters or formatting
+- You MUST NOT use regions or comments

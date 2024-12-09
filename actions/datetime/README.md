@@ -1,56 +1,73 @@
 # DateTime Actions
 
-## CRITICAL: EXACT SYNTAX FORMAT
+## ‼️ CRITICAL FORMATTING RULES - READ THIS FIRST ‼️
 
-Every action MUST be on a single line with EXACT spacing and NO line breaks. The following are the ONLY valid formats:
+### The ONLY Two Valid Formats:
 
-For getting current date/time:
+1. For getting current date/time, this EXACT line and NOTHING else:
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-For adding time:
+2. For adding time, this EXACT line and NOTHING else:
 ```
 DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-## Forbidden Formats
+### ⛔ ABSOLUTELY FORBIDDEN - DO NOT USE:
 
-DO NOT output in any of these formats as they are not pasteable:
+- NO REGIONS (never use **REGION** or **ENDREGION**)
+- NO DateTimeFormat parameter (do not include DateTimeFormat: DateTime.DateTimeFormat.DateAndTime)
+- NO comments
+- NO line breaks
+- NO extra spaces
+- NO additional parameters
+- NO different parameter names
+- NO different variable names than shown above
+- NO alternative syntaxes
 
-❌ WRONG - Do not use indentation or multi-line format:
+### 🚫 Examples of INCORRECT Formats That Will NOT Work:
+
 ```
-DateTime.Add
-  DateTime: %CurrentDateTime%
+// WRONG - Regions not allowed
+**REGION GetCurrentDateTime**
+DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDate
+**ENDREGION**
+
+// WRONG - Extra parameters not allowed
+DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDate
+
+// WRONG - Different variable names
+DateTime.Add DateTime: %CurrentDate% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
+
+// WRONG - Line breaks not allowed
+DateTime.Add 
+  DateTime: %CurrentDateTime% 
   TimeToAdd: 432000
   TimeUnit: DateTime.TimeUnit.Seconds
-  ResultedDate => FutureDateTime
+  ResultedDate=> ResultedDate
 ```
 
-❌ WRONG - Do not use regions:
+### ✅ The ONLY Valid Examples:
+
 ```
-**REGION Initialize
-DateTime.GetCurrentDateTime
-  DateTime => CurrentDateTime
-**ENDREGION
+DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-❌ WRONG - Do not add comments or extra formatting:
 ```
-DateTime.Add
-  DateTime: %CurrentDateTime%
-  TimeToAdd: 432000  // 5 business days in seconds
-  TimeUnit: DateTime.TimeUnit.Seconds
+DateTime.Add DateTime: `` TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-## Common Time Conversions
+## Time Conversions Reference
+
+When using DateTime.Add, convert all times to seconds:
 
 - 1 minute = 60 seconds
-- 1 hour = 3600 seconds 
+- 1 hour = 3600 seconds
 - 1 day = 86400 seconds
 - 5 days = 432000 seconds
 - 1 week = 604800 seconds
-- 1 month (30 days) = 2592000 seconds
+- 30 days = 2592000 seconds
 
 ## Available Actions
 

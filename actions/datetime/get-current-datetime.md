@@ -1,22 +1,49 @@
 # Get Current DateTime
 
-## CRITICAL: EXACT SYNTAX
+## ‼️ MANDATORY EXACT FORMAT - NO EXCEPTIONS ‼️
 
-This action MUST be written on a single line exactly as shown:
+This action has ONE valid format. It MUST be written EXACTLY as shown below:
 
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-## Description
-Gets the current system date and time.
+This means:
+- ONE line only
+- EXACT spacing (one space after each colon)
+- EXACT parameter names
+- EXACT variable names
+- NO additional parameters
+- NO regions
+- NO comments
+- NO line breaks
+- NO DateTimeFormat parameter
 
-## Parameters
+## ⛔ FORBIDDEN FORMATS - These Will NOT Work:
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| DateTime | Yes | Must be written with backticks exactly as shown |
-| ResultedDate=> | Yes | Must be written exactly as shown |
+```
+// WRONG - Regions not allowed
+**REGION GetCurrentDateTime**
+DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDate
+**ENDREGION**
+
+// WRONG - Extra parameters not allowed
+DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDate
+
+// WRONG - Different parameter names
+DateTime.GetCurrentDateTime Date: `` Result=> CurrentDate
+
+// WRONG - Line breaks not allowed
+DateTime.GetCurrentDateTime
+  DateTime: ``
+  ResultedDate=> CurrentDateTime
+```
+
+## ✅ The ONLY Valid Format:
+
+```
+DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
+```
 
 ## Output Variables
 
@@ -24,40 +51,10 @@ Gets the current system date and time.
 |----------|------|-------------|
 | CurrentDateTime | DateTime | The current system date and time |
 
-## Example - CORRECT FORMAT
+## Critical Notes
 
-✅ CORRECT - Single line with exact spacing:
-```
-DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
-```
-
-## Examples - WRONG FORMATS
-
-❌ WRONG - Do not use regions or indentation:
-```
-**REGION Initialize
-DateTime.GetCurrentDateTime
-  DateTime => CurrentDateTime
-**ENDREGION
-```
-
-❌ WRONG - Do not break into multiple lines:
-```
-DateTime.GetCurrentDateTime
-  DateTime: `` 
-  ResultedDate => CurrentDateTime
-```
-
-❌ WRONG - Do not add comments or extra formatting:
-```
-// Get current date
-DateTime.GetCurrentDateTime DateTime => CurrentDateTime
-```
-
-## Notes
-
-- Must be a single line
-- Must use exact spacing
-- Must use backticks (``) as shown
-- No comments or extra formatting
-- No regions or indentation
+- You MUST use this EXACT format
+- You MUST use CurrentDateTime as the output variable name
+- You MUST keep it on one line
+- You MUST NOT add any extra parameters or formatting
+- You MUST NOT use regions or comments
