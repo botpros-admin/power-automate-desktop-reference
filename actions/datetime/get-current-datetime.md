@@ -1,48 +1,49 @@
 # Get Current DateTime
 
-## 🚨 BACKTICKS ARE MANDATORY - MUST USE EXACTLY AS SHOWN 🚨
+## 🚨 EXACT SYNTAX REQUIRED - NO VARIATIONS ALLOWED 🚨
 
-This is the ONLY valid format - BACKTICKS REQUIRED:
+This is the ONLY valid syntax:
 
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-## ⛔️ THESE ARE ALL WRONG - DO NOT USE:
+### ❌ THESE ARE ALL WRONG:
 
 ```
-// ❌ WRONG - NO BACKTICKS
-DateTime.GetCurrentDateTime Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentTime
+❌ WRONG - DO NOT ADD .Local:
+DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> %CurrentDate%
 
-// ❌ WRONG - HAS REGIONS AND NO BACKTICKS
-**REGION InitializeCurrentTime
-DateTime.GetCurrentDateTime Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentTime
+❌ WRONG - DO NOT USE REGIONS:
+**REGION Initialize
+DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> %CurrentDate%
 **ENDREGION
 
-// ❌ WRONG - USING %VARIABLES% INSTEAD OF BACKTICKS
-DateTime.GetCurrentDateTime DateTime: %CurrentTime% ResultedDate=> CurrentDateTime
+❌ WRONG - DO NOT USE DateTimeFormat:
+DateTime.GetCurrentDateTime DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDateTime
+
+❌ WRONG - DO NOT USE %VARIABLES%:
+DateTime.GetCurrentDateTime DateTime: %CurrentDate% ResultedDate=> CurrentDateTime
+
+❌ WRONG - DO NOT USE $''' SYNTAX:
+DateTime.GetCurrentDateTime DateTime: $'''%CurrentDate%''' ResultedDate=> CurrentDateTime
 ```
 
-## ✅ THIS IS THE ONLY CORRECT FORMAT:
+### ✅ THIS IS THE ONLY CORRECT SYNTAX:
 
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-## 🔴 ABSOLUTELY REQUIRED:
+### 🔴 ABSOLUTE REQUIREMENTS:
 
-1. BACKTICKS (``) MUST BE USED EXACTLY AS SHOWN
-2. NO %VARIABLES% - USE BACKTICKS INSTEAD
-3. NO REGIONS
-4. NO DateTimeFormat parameter
-5. NO Local parameter
-6. ONE LINE ONLY
-7. EXACT SPACING
-8. EXACT PARAMETER NAMES
-9. EXACT VARIABLE NAMES
-
-## Output Variables
-
-| Variable | Type | Description |
-|----------|------|-------------|
-| CurrentDateTime | DateTime | The current system date and time |
+1. MUST use DateTime: ``
+2. MUST use ResultedDate=>
+3. MUST use CurrentDateTime as variable name
+4. NO .Local suffix
+5. NO DateTimeFormat parameter
+6. NO %variables%
+7. NO $''' syntax
+8. NO regions
+9. ONE line only
+10. EXACT spacing

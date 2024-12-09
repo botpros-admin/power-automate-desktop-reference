@@ -1,61 +1,58 @@
 # DateTime Actions
 
-## 🚨 MANDATORY BACKTICKS AND EXACT FORMAT - READ FIRST 🚨
+## 🚨 MANDATORY EXACT SYNTAX - READ THIS FIRST 🚨
 
-### ‼️ THE BACKTICKS (``) ARE REQUIRED - DO NOT REMOVE THEM ‼️
+### ⚠️ These Are The ONLY TWO Valid Syntax Patterns:
 
-1. Getting current time - BACKTICKS REQUIRED:
+1. Getting current time:
 ```
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
 ```
 
-2. Adding time - BACKTICKS REQUIRED:
+2. Adding time:
 ```
 DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-### ⛔️ THESE ARE WRONG - THEY WILL NOT WORK:
+### ❌ THESE PATTERNS ARE WRONG AND WILL NOT WORK:
 
 ```
-// ❌ WRONG - NO BACKTICKS
-DateTime.GetCurrentDateTime DateTime: Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentTime
-
-// ❌ WRONG - NO BACKTICKS AND HAS REGIONS
-**REGION InitializeCurrentTime
-DateTime.GetCurrentDateTime Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentTime
+❌ WRONG - DO NOT USE REGIONS:
+**REGION Initialize
+DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> %CurrentDate%
 **ENDREGION
 
-// ❌ WRONG - USING %Variables% INSTEAD OF BACKTICKS
-DateTime.Add DateTime: %CurrentTime% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> FutureDate
+❌ WRONG - DO NOT USE .Local OR DateTimeFormat:
+DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> %CurrentDate%
+
+❌ WRONG - DO NOT USE %VARIABLES%:
+DateTime.Add DateTime: %CurrentDate% TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> %FutureDate%
+
+❌ WRONG - DO NOT USE $''' SYNTAX:
+DateTime.GetCurrentDateTime DateTime: $'''%CurrentDate%''' ResultedDate=> CurrentDateTime
 ```
 
-### ✅ THESE ARE THE ONLY CORRECT FORMATS:
+### ✅ COPY THESE PATTERNS EXACTLY:
 
+To get current date/time, use EXACTLY:
 ```
-// ✅ CORRECT - HAS BACKTICKS
 DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
-
-// ✅ CORRECT - HAS BACKTICKS
-DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
 ```
 
-### 🔴 ABSOLUTELY REQUIRED:
+To add time (like 5 days = 432000 seconds), use EXACTLY:
+```
+DateTime.Add DateTime: `` TimeToAdd: 432000 TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
+```
 
-1. BACKTICKS (``) MUST BE USED AS SHOWN
-2. NO %VARIABLES% - USE BACKTICKS INSTEAD
-3. NO REGIONS
-4. NO DateTimeFormat parameter
-5. NO Local parameter
+### 🔴 SYNTAX REQUIREMENTS:
+
+1. NO regions (**REGION**, **ENDREGION**)
+2. NO .Local suffix
+3. NO DateTimeFormat parameter
+4. NO %variables% - use backticks (``) instead
+5. NO $''' syntax
 6. NO line breaks
-7. NO extra parameters
-8. NO different variable names
-
-## Time Conversions
-
-When using DateTime.Add, convert all times to seconds:
-- 1 minute = 60 seconds
-- 1 hour = 3600 seconds
-- 1 day = 86400 seconds
-- 5 days = 432000 seconds
-- 1 week = 604800 seconds
-- 30 days = 2592000 seconds
+7. MUST use ResultedDate=> (not CurrentDateTime=>)
+8. MUST use DateTime: (not Date:)
+9. MUST follow spacing exactly
+10. MUST use parameter names exactly as shown
