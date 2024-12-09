@@ -4,11 +4,19 @@ Actions for working with dates and times in Power Automate Desktop. These action
 
 ## Important Notes
 
-- Each syntax line must be pasted exactly as shown
-- Placeholders are shown with backticks (``) - replace these with your values
-- Do not add extra spaces, line breaks, or formatting
-- Times are typically handled in seconds for maximum compatibility
-- Test any modifications before using in production
+- Each action must follow the exact syntax pattern:
+  ```
+  DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds ResultedDate=> ResultedDate
+  ```
+  or
+  ```
+  DateTime.GetCurrentDateTime DateTime: `` ResultedDate=> CurrentDateTime
+  ```
+
+- Always use backticks (``) as placeholders
+- Maintain exact spacing and parameter names
+- Use Seconds for all time units
+- Test any modifications before using
 
 ## Available Actions
 

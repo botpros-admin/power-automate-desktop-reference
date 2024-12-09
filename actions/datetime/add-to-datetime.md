@@ -12,8 +12,8 @@ DateTime.Add DateTime: `` TimeToAdd: `` TimeUnit: DateTime.TimeUnit.Seconds Resu
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| DateTime | Yes | The date/time value to add to |
-| TimeToAdd | Yes | Amount of time to add (numeric value) |
+| DateTime | Yes | The date/time value to add to (use backticks) |
+| TimeToAdd | Yes | Amount of time to add in seconds (numeric value) |
 | TimeUnit | Yes | Must be DateTime.TimeUnit.Seconds |
 
 ## Output Variables
@@ -42,6 +42,7 @@ DateTime.Add DateTime: `` TimeToAdd: 3600 TimeUnit: DateTime.TimeUnit.Seconds Re
 ## Important Notes
 
 - Always use Seconds as the TimeUnit for consistent behavior
+- Maintain exact syntax pattern with backticks as shown
 - Convert your desired time to seconds before using:
   - Minutes × 60
   - Hours × 3600
